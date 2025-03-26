@@ -1,6 +1,8 @@
 from flask import Flask
 from data import db_session
 from data.users import User
+from data.jobs import Jobs
+import datetime
 
 
 app = Flask(__name__)
@@ -42,11 +44,20 @@ def main():
     user3.speciality = "research engineer3"
     user3.address = "module_1_3"
     user3.email = "scotttt_chief@mars3.org"
+    user_job = Jobs()
+    user_job.team_leader = 1
+    user_job.job_description = "deployment of residential modules 1 and 2"
+    user_job.work_size = 15
+    user_job.collaborators_ids = "2, 3"
+    user_job.start_date = "Now"
+    user_job.end_date = "False"
+    user_job.is_finished = False
     db_sess = db_session.create_session()
     db_sess.add(user)
     db_sess.add(user1)
     db_sess.add(user2)
     db_sess.add(user3)
+    db_sess.add(user_job)
     db_sess.commit()
     app.run()
 
