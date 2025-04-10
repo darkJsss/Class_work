@@ -8,9 +8,9 @@ class Jobs(SqlAlchemyBase):
 
     id = Column(Integer, primary_key=True)
     team_leader = Column(Integer, ForeignKey('users.id'), nullable=False)
-    job_description = Column(String)
-    work_size_hours = Column(Integer)
-    collaborators_ids = Column(String)
+    job = Column(String)
+    work_size = Column(Integer)
+    collaborators = Column(String)
     start_date = Column(String)
     end_date = Column(String)
     is_finished = Column(Boolean)
